@@ -1,0 +1,112 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+}
+
+button , input, select {
+    display: block;
+    margin: 15px auto;
+    padding: 8px;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 15px auto;
+    padding: 15px;
+}
+
+.products-grid {
+    display: grid;
+    /*grid-template-columns: 1fr, 1fr, 1fr, 1fr;*/
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));/*leírása, hogy miért jó white-box alatt*/
+    grid-gap: 15px;
+}
+
+.product {
+    background-color: #89b2db;
+    border: 1px solid #597692;
+    text-align: center;
+    padding: 15px;
+}
+
+.product-img {
+    width: 100%;
+    margin: auto;
+    /*hogy középen legyen a kép, amit belerakunk*/
+}
+
+.product-img img {
+    width:100%;
+    height: 250px;
+    object-fit: cover;
+    /*
+    Object-fit:cover azt jelenti, hogy vegye fel teljesen a width-jét és a height-ját amibe beleraktuk 
+    */
+}
+.product-data {
+    /*kiírjuk a termékeknek az árát stb. ebbe*/
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 5px;
+}
+
+.white-box {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/*
+most a termékeink egy négyes osztható grid-ben vannak (.products-grid) és ha összehuzzuk a képernyőt 
+akkor egy idő után már nem fog kiférni ilyenkor csináltunk media query-ket 
+de ezt el lehet kerülni és készíthetünk olyan gridet ami automatikusan annyi hasábot(oszlopot) jelenit meg 
+amennyi kifér és a .products-grid-ben a grid-template-columns: 1fr 1fr 1fr 1fr helyett azt mondjuk ->
+
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
+
+az egyik kulcsszó az auto-fill, mert ez automatikusan ugy tölti ki a dolgokat, amennyit a repeat-nek a másik 
+paraméterében meghatározunk és ez az lesz, hogy minmax(250px, 1fr)
+akkor ez azt fogja eredményezni, hogy egészen addig amig az oszlopnak a mérete 250px-nél nagyobb vagy azzal 
+egyenlő, addig annyi 1fr-t fog az auto-fill-be belerakni, ameddig ez igaz, hogyha már nem igaz, akkor csökkenti az fr-eket eggyel  
+
+Ez azt eredményezi, hogyha huzzúk be a képernyőt és egy oszlop kisebb lesz, mint 250px, akkor a 4 helyett, ami most van 
+egyből bemegy 3-ba, mert hogy nem igaz ez a szabály és ha huzzuk befele mégjobban, akkor be fog menni 2-re és utána egyre 
+és ez így teljesen responsive egy sornyi kóddal
+*/
+
+.product-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    /*
+    ebben lesz két div-ünk className="product-data-box"
+    */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.product-data-box {
+    background-color: #89b2db;
+    border: #597692;
+    padding: 15px;
+    /*
+    Akkor, így, amiben bent vannak a keresőmezők ez a két box kapott egy kék háttérszínt és egy kicsit sötétebb kék border-t
+    */
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.error-label {
+    padding: 10px;
+    text-align: center;/*mondjuk erre nincs szükség, mert minden alapból text-align: center*/
+    color: #db3300;
+}
